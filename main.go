@@ -204,7 +204,7 @@ func main() {
 	default:
 		logFail("invalid message_format: %s, available options [html, text]", messageFormat)
 	}
-
+	if !isBuildFailedMode {
 	request, err := createRequest(requestURL, fields, attachments)
 	if err != nil {
 		logFail("Failed to create request, error: %s", err)
@@ -229,4 +229,5 @@ func main() {
 
 	logInfo("response content: %s", contents)
 	logDetails("status code: %d", response.StatusCode)
+}
 }
